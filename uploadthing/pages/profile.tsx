@@ -33,6 +33,14 @@ const Profile = () => {
     }
   }, [router]);
 
+  const handleLogout = () => {
+    // Clear the token from localStorage
+    localStorage.removeItem('token');
+
+    // Redirect to the login page
+    router.push('/login');
+  };
+
   if (!user) {
     return <div>Loading...</div>;
   }
@@ -42,6 +50,8 @@ const Profile = () => {
       <h1>Profile</h1>
       <p>Email: {user.email}</p>
       <p>Profile Picture: {user.profilePicture}</p>
+
+      <button onClick={handleLogout}>Logout</button>
     </div>
   );
 };
