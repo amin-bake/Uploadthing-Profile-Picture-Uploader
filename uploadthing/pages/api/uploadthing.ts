@@ -6,9 +6,9 @@ process.env.UPLOADTHING_APP_ID
 export default createRouteHandler({
   router: ourFileRouter,
   config: {
-    callbackUrl: "https://uploadthing.com/dashboard/3kkrc88mm0",
+    callbackUrl: "https://uploadthing.com/dashboard/5n36cy6dw0",
     uploadthingId: "5n36cy6dw0",
-    uploadthingSecret: "sk_live_9e951ffda034a5bd65747a80b14731ad26dc00d030c2da0d1190285a6a926cb3", 
+    uploadthingSecret: "sk_live_5217d46656f83f81f0a37c69a37489b5836faf31070a5bb5bb8b871fd0030f03", 
     isDev: true,
 
   }
