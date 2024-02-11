@@ -55,7 +55,7 @@ app.prepare().then(() => {
       req.user = user;
       next();
     });
-  };
+  };  
 
   server.post('/api/register', async (req, res) => {
     const { email, password } = req.body;

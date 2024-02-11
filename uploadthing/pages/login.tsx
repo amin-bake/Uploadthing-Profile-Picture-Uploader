@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/router';
+import useAuth from '../hooks/useAuth'; 
 
 const Login = () => {
   const router = useRouter();
@@ -9,6 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  useAuth('/login');
   const handleLogin = async () => {
     try {
       const response = await axios.post('/api/login', { email, password });
