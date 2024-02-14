@@ -91,8 +91,8 @@ app.prepare().then(() => {
   server.all('*', (req, res) => {
     return handle(req, res);
   });
-
-  server.listen(3001, () => {
-    console.log('Server is running on http://localhost:3001');
+  const PORT = process.env.CALLBACK_URL;
+  server.listen(PORT, () => {
+    console.log(`Server is listening at http://localhost`,{PORT});
   });
 });
