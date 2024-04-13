@@ -1,26 +1,36 @@
 "use client";
 
-export default function Login() {
+import axios, {AxiosError} from "axios";
+
+export function Login() {
     const handlSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const payload = {
-            email: event.currentTarget.email.value,
+            username: event.currentTarget.username.value,
             password: event.currentTarget.password.value
         };
+        try{
+            const {data} = await axios.post("/api/auth/login", payload);
+            alert(JSON.stringify(data))
+            // redirect user to profile
+        }catch(e){
+            const error = e as AxiosError;
+            alert(error.message);
+        }
     };
 
     return (
         <main>
-            <h1 className="item-center">Login Page</h1>
+            <h1>Login Page</h1>
             <form onSubmit={handlSubmit} className="flex flex-col gap-4">
                 <div>
-                    <label htmlFor="email">Email:</label>
-                    <input className="border rounded border-black" type="text" id="email" name="username" required />
+                    <label htmlFor="username">Username:</label>
+                    <input className="border rounded text-black border-black" type="text" id="username" name="username" required />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input className="border rounded border-black" type="text" id="password" name="username" required />
+                    <input className="border rounded text-black border-black" type="password" id="password" name="password" required />
                 </div>
                 <div>
                     <button className="p-2 bg-orange-600 text-white w-fit rounded" type="submit">Submit</button>
@@ -30,3 +40,4 @@ export default function Login() {
     )
     
 }
+
