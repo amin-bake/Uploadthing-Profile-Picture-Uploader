@@ -1,8 +1,13 @@
 "use client";
 
 import axios, {AxiosError} from "axios";
+import { useRouter } from "next/navigation";
 
 export function Login() {
+    // 'push' for client routing
+    const {push} = useRouter();
+
+
     const handlSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
@@ -14,6 +19,7 @@ export function Login() {
             const {data} = await axios.post("/api/auth/login", payload);
             alert(JSON.stringify(data))
             // redirect user to profile
+            push("/dashboard");
         }catch(e){
             const error = e as AxiosError;
             alert(error.message);

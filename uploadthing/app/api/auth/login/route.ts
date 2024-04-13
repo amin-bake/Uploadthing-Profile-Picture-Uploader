@@ -1,9 +1,8 @@
 import { sign } from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import { serialize } from "cookie";
+import { COOKIE_NAME, MAX_AGE } from "@/constants";
 
-//cookie expirey date
-const MAX_AGE = 60 * 60 * 24 * 30; //30 days
 
 export async function POST(request: Request){
     // Handle request
@@ -32,7 +31,7 @@ export async function POST(request: Request){
             expiresIn: MAX_AGE,
         }
     );
-    const seralized = serialize("OutSite", token, {
+    const seralized = serialize(COOKIE_NAME, token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "development",
         sameSite: "strict",

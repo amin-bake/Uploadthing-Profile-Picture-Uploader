@@ -1,6 +1,6 @@
 "use client";
 
-export default function Signup() {
+export function Signup() {
     const handlSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
@@ -11,7 +11,7 @@ export default function Signup() {
     };
 
     return(
-        <main>
+        
             <div>
                 <h1>Sign up Page</h1>
                 <form onSubmit={handlSubmit}>
@@ -28,6 +28,6 @@ export default function Signup() {
                     </div>
                 </form>
             </div>
-        </main>
+        
     )
 };
