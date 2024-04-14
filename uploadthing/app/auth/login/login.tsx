@@ -2,13 +2,14 @@
 
 import axios, {AxiosError} from "axios";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export function Login() {
     // 'push' for client routing
     const {push} = useRouter();
 
 
-    const handlSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const payload = {
@@ -19,7 +20,7 @@ export function Login() {
             const {data} = await axios.post("/api/auth/login", payload);
             alert(JSON.stringify(data))
             // redirect user to profile
-            push("/dashboard");
+            push("/dashboard/profile");
         }catch(e){
             const error = e as AxiosError;
             alert(error.message);
@@ -29,7 +30,7 @@ export function Login() {
     return (
         <main>
             <h1>Login Page</h1>
-            <form onSubmit={handlSubmit} className="flex flex-col gap-4">
+            <form onSubmit={handleLogin} className="flex flex-col gap-4">
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input className="border rounded text-black border-black" type="text" id="username" name="username" required />

@@ -10,6 +10,7 @@ export async function POST(request: Request){
 
     const {username, password} = body;
 
+    // Hard-coded values (fakeDB)
     if(username !== "admin" || password !== "admin"){
         return NextResponse.json(
             {
@@ -48,5 +49,4 @@ export async function POST(request: Request){
         headers: {"Set-Cookie": seralized}
     });
     
-
 }

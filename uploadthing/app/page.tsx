@@ -8,7 +8,6 @@ export default function Home() {
     <main >
       <div>
         <Login/>
-        {/* <Signup/> */}
       </div>
     </main>
   );

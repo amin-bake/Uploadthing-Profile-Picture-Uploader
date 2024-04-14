@@ -25,6 +25,7 @@ export default function Profile({children,}: {
             }
             // Success
             setIsSuccess(true);
+            console.log(user);
         })();
     }, []);
 
